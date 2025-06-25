@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  --font-figtree: "Figtree", sans-serif;
-  --font-inter: "Inter", sans-serif;
   --color-dark-100: #1f1f36;
   --color-dark-200: #141627;
   --color-dark-300: #101828;
@@ -11,9 +9,9 @@
   --color-gray-200: #eaecf0;
   --color-gray-500: #667085;
   --color-gray-700: #344054;
-  --color-primary-50: #e9f3fb;
-  --color-primary-100: #256ff1;
-  --color-primary-500: #175cd3;
+  --color-primary-50: #e1f0ed;
+  --color-primary-100: #91c4bc;
+  --color-primary-500: #4a857d;
   --color-light-100: #ecf2ef;
   --color-light-200: #f9fbfc;
   --color-light-300: #f2f4f7;
@@ -22,38 +20,43 @@
   --color-success-50: #ecfdf3;
   --color-success-500: #12b76a;
   --color-success-700: #027a48;
-  --color-pink-50: #f7edf6;
-  --color-pink-500: #c11574;
+  /* --color-orange-50: #f7edf6; */
+  --color-orange-500: #f78748;
   --color-navy-50: #f0f9ff;
   --color-navy-500: #026aa2;
   --color-red-500: #b93815;
   --color-red-50: #fff4ed;
   --color-red-100: #ff543d;
+}
 
-  --background-image-auth: url("/assets/images/auth-img.webp");
-  --background-image-hero: url("/assets/images/hero-img.png");
-  --background-image-card-1: url("/assets/images/card-img-1.png");
-  --background-image-card-2: url("/assets/images/card-img-2.png");
-  --background-image-card-3: url("/assets/images/card-img-3.png");
-  --background-image-card-4: url("/assets/images/card-img-4.png");
-  --background-image-card-5: url("/assets/images/card-img-5.png");
-  --background-image-card-6: url("/assets/images/card-img-6.png");
-  --background-image-linear100: linear-gradient(
-    105deg,
-    rgba(207, 241, 255, 0.8) 14.17%,
-    rgba(255, 255, 255, 0) 54.71%
-  );
-  --background-image-linear200: linear-gradient(
-    39deg,
-    rgba(3, 3, 3, 0.54) -3.66%,
-    rgba(6, 6, 6, 0) 45.57%
-  );
-  --shadow-100: 0px 1px 3px 0px rgba(16, 24, 40, 0.1),
-    0px 1px 2px 0px rgba(16, 24, 40, 0.06);
-  --shadow-200: 0px 12px 16px -4px rgba(16, 24, 40, 0.1),
-    0px 4px 20px -2px rgba(16, 24, 40, 0.2);
-  --shadow-300: 0px 2px 30px 0px rgba(0, 0, 0, 0.05);
-  --shadow-400: 0px 2px 6px 0px rgba(13, 10, 44, 0.08);
-  --shadow-500: 0px 12px 16px -4px rgba(16, 24, 40, 0.1);
-  --radius-20: 20px;
+@layer components {
+}
+
+@layer utilities {
+  .wrapper {
+    @apply w-full max-w-7xl mx-auto px-4 lg:px-8;
+  }
+  .wrapper-md {
+    @apply w-full max-w-3xl px-4 lg:px-8 mx-auto;
+  }
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+  .p-16-semibold {
+    @apply text-sm md:text-base font-semibold;
+  }
+  .form-label {
+    @apply text-sm font-normal text-gray-100;
+  }
+  .form-input {
+    @apply p-3.5 border border-light-400 rounded-xl text-base text-dark-300 font-normal;
+  }
+  .nav-item {
+    @apply flex items-center text-xs md:text-lg font-normal cursor-pointer gap-2.5 py-[18px] px-3.5 rounded-lg text-dark-200 hover:bg-primary-100 hover:text-white;
+  }
+}
+
+html,
+body {
+  scroll-behavior: smooth;
 }
