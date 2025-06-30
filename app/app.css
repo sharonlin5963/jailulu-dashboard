@@ -30,6 +30,9 @@
 }
 
 @layer components {
+  .dashboard {
+    @apply flex flex-col gap-10 pb-20;
+  }
 }
 
 @layer utilities {
