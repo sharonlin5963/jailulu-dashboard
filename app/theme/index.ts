@@ -30,7 +30,13 @@ const theme = createTheme({
         root: {
           boxShadow: "0px 2px 6px 0px rgba(13, 10, 44, 0.08)",
           borderRadius: "20px",
-          padding: "20px",
+        },
+      },
+    },
+    MuiCardContent: {
+      styleOverrides: {
+        root: {
+          padding: "24px",
         },
       },
     },

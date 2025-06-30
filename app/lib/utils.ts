@@ -31,3 +31,11 @@ export const calculateTrendPercentage = (
     return { trend: "no change", percentage: 0 };
   }
 };
+
+export const formatTWD = (num: number) => {
+  return num.toLocaleString("zh-TW", {
+    style: "currency",
+    currency: "TWD",
+    minimumFractionDigits: 0,
+  });
+};
