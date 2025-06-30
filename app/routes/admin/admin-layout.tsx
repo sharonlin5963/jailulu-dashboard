@@ -8,7 +8,7 @@ const AdminLayout = () => {
       <aside className="w-full max-w-[270px] hidden lg:block">
         <NavItems />
       </aside>
-      <aside className="w-full h-full bg-light-200 pt-12 lg:pt-10">
+      <aside className="w-full h-full bg-light-200 pt-40 lg:pt-10">
         <Outlet />
       </aside>
     </div>
