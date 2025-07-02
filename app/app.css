@@ -26,7 +26,7 @@
   --color-navy-500: #026aa2;
   --color-red-500: #b93815;
   --color-red-50: #fff4ed;
-  --color-red-100: #ff543d;
+  --color-red-100: #d32f2f;
 }
 
 @layer components {
@@ -47,12 +47,6 @@
   }
   .p-16-semibold {
     @apply text-sm md:text-base font-semibold;
-  }
-  .form-label {
-    @apply text-sm font-normal text-gray-100;
-  }
-  .form-input {
-    @apply p-3.5 border border-light-400 rounded-xl text-base text-dark-300 font-normal;
   }
   .nav-item {
     @apply flex items-center text-xs md:text-lg font-normal cursor-pointer gap-2.5 py-[18px] px-3.5 rounded-lg text-dark-200 hover:bg-primary-100 hover:text-white;

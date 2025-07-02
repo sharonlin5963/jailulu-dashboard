@@ -18,11 +18,6 @@ const theme = createTheme({
       light: "#ecfdf3",
       dark: "#027a48",
     },
-    error: {
-      main: "#ff543d",
-      light: "#fff4ed",
-      dark: "#b93815",
-    },
   },
   components: {
     MuiCard: {
@@ -37,6 +32,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           padding: "24px",
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: "0px 2px 6px 0px rgba(13, 10, 44, 0.08)",
         },
       },
     },
