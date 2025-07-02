@@ -11,16 +11,20 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@hookform/resolvers": "^5.1.1",
     "@mui/icons-material": "^7.1.2",
     "@mui/material": "^7.1.2",
     "@react-router/node": "^7.5.3",
     "@react-router/serve": "^7.5.3",
     "clsx": "^2.1.1",
+    "firebase": "^11.10.0",
     "isbot": "^5.1.27",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.59.0",
     "react-router": "^7.5.3",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@react-router/dev": "^7.5.3",
