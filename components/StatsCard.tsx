@@ -35,14 +35,14 @@ const StatsCard = ({
               <div className="flex items-center gap-2">
                 <figure className="flex items-center gap-1">
                   {isDecrement ? (
-                    <ArrowDownwardOutlined color="success" />
+                    <ArrowDownwardOutlined color="error" />
                   ) : (
-                    <ArrowUpwardOutlined color="error" />
+                    <ArrowUpwardOutlined color="success" />
                   )}
                   <figcaption
                     className={cn(
                       "text-sm font-medium",
-                      isDecrement ? "text-success-500" : "text-red-100"
+                      isDecrement ? "text-red-100" : "text-success-500"
                     )}
                   >
                     {Math.round(percentage)}%

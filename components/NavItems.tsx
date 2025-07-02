@@ -1,22 +1,22 @@
-import { NavLink } from "react-router";
+import { NavLink, useLoaderData, useNavigate } from "react-router";
 import { cn } from "~/lib/utils";
 import { Logo } from "./";
-import IconButton from "@mui/material/IconButton";
-import LogoutIcon from "@mui/icons-material/Logout";
-import FaceIcon from "@mui/icons-material/Face";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import { IconButton } from "@mui/material";
+import { Logout, Face, HomeOutlined, GroupOutlined } from "@mui/icons-material";
 import { SvgIcon } from "@mui/material";
+import { auth } from "~/firebase/config";
+import { signOut } from "firebase/auth";
+import { useState } from "react";
 
 const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   const sidebarItems = [
     {
-      icon: HomeOutlinedIcon,
+      icon: HomeOutlined,
       label: "Dashboard",
       href: "/dashboard",
     },
     {
-      icon: GroupOutlinedIcon,
+      icon: GroupOutlined,
       label: "用戶管理",
       href: "/users",
     },
@@ -27,11 +27,18 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
     // },
   ];
 
-  const user = {
-    name: "Sharon",
-    email: "sharon@gmail.com",
-    // imageUrl: "/assets/images/david.webp",
-    imageUrl: "",
+  const user = useLoaderData();
+  const navigator = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleLogout = async () => {
+    try {
+      setIsLoading(true);
+      await signOut(auth);
+      navigator("/sign-in");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -67,20 +74,25 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
               alt={user.name}
             />
           ) : (
-            <FaceIcon className="text-gray-100" sx={{ fontSize: 40 }} />
+            <Face className="text-gray-100" sx={{ fontSize: 40 }} />
           )}
 
           <article className="flex flex-col gap-[2px] max-w-[115px]">
             <h2 className="p-16-semibold text-dark-200 truncate">
-              {user?.name}
+              {user?.name || user?.email}
             </h2>
             <p className="text-gray-100 text-xs md:text-sm font-normal truncate">
               {user?.email}
             </p>
           </article>
 
-          <IconButton aria-label="logout" color="warning">
-            <LogoutIcon />
+          <IconButton
+            aria-label="logout"
+            color="warning"
+            onClick={handleLogout}
+            loading={isLoading}
+          >
+            <Logout />
           </IconButton>
         </footer>
       </div>

@@ -1,10 +1,6 @@
 import { useState } from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Drawer from "@mui/material/Drawer";
+import { AppBar, Toolbar, Box, IconButton, Drawer } from "@mui/material";
+import { Menu } from "@mui/icons-material";
 import { NavItems, Logo } from "./";
 
 const MobileSidebar = () => {
@@ -26,7 +22,7 @@ const MobileSidebar = () => {
             edge="end"
             aria-label="menu"
           >
-            <MenuIcon sx={{ fontSize: 35 }} />
+            <Menu sx={{ fontSize: 35 }} />
           </IconButton>
           <Drawer open={open} onClose={toggleDrawer(false)}>
             <NavItems handleClick={toggleDrawer(false)} />
