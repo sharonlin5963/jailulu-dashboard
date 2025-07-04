@@ -1,5 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
+import dayjs from "dayjs";
+import type { Timestamp } from "firebase/firestore";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -39,3 +41,7 @@ export const formatTWD = (num: number) => {
     minimumFractionDigits: 0,
   });
 };
+
+export function formatFirestoreTimestamp(ts: Timestamp) {
+  return dayjs(ts.toDate()).format("YYYY-MM-DD");
+}

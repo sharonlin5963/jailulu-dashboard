@@ -18,7 +18,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
     {
       icon: GroupOutlined,
       label: "用戶管理",
-      href: "/users",
+      href: "/all-users",
     },
     // {
     //   icon: "/assets/icons/users.svg",
