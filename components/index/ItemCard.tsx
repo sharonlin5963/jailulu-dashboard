@@ -25,14 +25,7 @@ const ItemCard = ({
 
   return (
     <Card>
-      <CardActionArea
-        component={Link}
-        to={
-          path.pathname === "/" || path.pathname.startsWith("/products")
-            ? `/products/${id}`
-            : `/items/${id}`
-        }
-      >
+      <CardActionArea component={Link} to={`/product-edit/${id}`}>
         <img
           src={imageUrls[0]}
           alt={name}

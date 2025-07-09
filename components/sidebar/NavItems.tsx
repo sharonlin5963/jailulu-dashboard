@@ -1,7 +1,7 @@
 import { NavLink, useLoaderData, useNavigate } from "react-router";
 import { cn } from "~/lib/utils";
-import { Logo } from "./";
-import { IconButton } from "@mui/material";
+import { Logo } from "..";
+import { Button, IconButton } from "@mui/material";
 import {
   Logout,
   Face,
@@ -72,25 +72,31 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
           ))}
         </nav>
 
-        <footer className="flex-center gap-2.5 pb-8">
-          {user.imageUrl ? (
-            <img
-              className="size-10 rounded-full aspect-square"
-              src={user.imageUrl}
-              alt={user.name}
-            />
-          ) : (
-            <Face className="text-gray-100" sx={{ fontSize: 40 }} />
-          )}
+        <footer className="flex-center gap-3 pb-8">
+          <Button
+            variant="text"
+            className="flex-center gap-2.5"
+            // onClick={setModalOpen}
+          >
+            {user.imageUrl ? (
+              <img
+                className="size-10 rounded-full aspect-square"
+                src={user.imageUrl}
+                alt={user.name}
+              />
+            ) : (
+              <Face className="text-gray-100" sx={{ fontSize: 40 }} />
+            )}
 
-          <article className="flex flex-col gap-[2px] max-w-[115px]">
-            <h2 className="p-16-semibold text-dark-200 truncate">
-              {user?.name || user?.email}
-            </h2>
-            <p className="text-gray-100 text-xs md:text-sm font-normal truncate">
-              {user?.email}
-            </p>
-          </article>
+            <article className="flex flex-col gap-[2px] max-w-[115px]">
+              <h2 className="p-16-semibold text-dark-200 truncate">
+                {user?.name || user?.email}
+              </h2>
+              <p className="text-gray-100 text-xs md:text-sm font-normal truncate">
+                {user?.email}
+              </p>
+            </article>
+          </Button>
 
           <IconButton
             aria-label="logout"

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { AppBar, Toolbar, Box, IconButton, Drawer } from "@mui/material";
 import { Menu } from "@mui/icons-material";
-import { NavItems, Logo } from "./";
+import { NavItems, Logo } from "..";
 
 const MobileSidebar = () => {
   const [open, setOpen] = useState(false);
