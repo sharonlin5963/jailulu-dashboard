@@ -3,31 +3,29 @@ import { formatTWD } from "~/lib/utils";
 import { Card, CardActionArea, CardContent, Chip } from "@mui/material";
 
 interface ItemCardProps {
-  id: number;
+  id: string;
   name: string;
-  imageUrls: string[];
+  imageUrl: string;
   group: string;
   price: number;
-  specialPrice: number | null;
+  isSale: Boolean;
+  specialPrice?: number;
 }
 
 const ItemCard = ({
   id,
   name,
-  imageUrls,
+  imageUrl,
   group,
   price,
+  isSale,
   specialPrice,
 }: ItemCardProps) => {
-  const path = useLocation();
-
-  const isSale = specialPrice !== null;
-
   return (
     <Card>
       <CardActionArea component={Link} to={`/product-edit/${id}`}>
         <img
-          src={imageUrls[0]}
+          src={imageUrl}
           alt={name}
           className=" w-full h-[180px] rounded-t-xl object-cover aspect-square"
         />
@@ -52,7 +50,7 @@ const ItemCard = ({
                 >
                   {formatTWD(price)}
                 </span>
-                {isSale && (
+                {isSale && specialPrice && (
                   <span className="text-red-100">
                     {formatTWD(specialPrice)}
                   </span>
