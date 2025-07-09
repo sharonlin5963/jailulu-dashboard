@@ -19,8 +19,8 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   const sidebarItems = [
     {
       icon: HomeOutlined,
-      label: "Dashboard",
-      href: "/dashboard",
+      label: "首頁",
+      href: "/",
     },
     {
       icon: GroupOutlined,

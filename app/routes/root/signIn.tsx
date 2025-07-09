@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 export async function clientLoader() {
   const currentUser = await getCurrentUser();
   if (currentUser) {
-    return redirect("/dashboard");
+    return redirect("/");
   }
 }
 
@@ -62,7 +62,7 @@ const signIn = () => {
     try {
       setIsLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/dashboard");
+      navigate("/index");
     } catch (error: any) {
       handleAuthError(error.code);
     } finally {
