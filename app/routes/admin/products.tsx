@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 import { db } from "~/firebase/config";
 import type { Column } from "components/ui/BaseTable";
 import { Switch } from "@mui/material";
-import { EditNote } from "@mui/icons-material";
+import EditNoteIcon from "@mui/icons-material/EditNote";
 import { Link } from "react-router";
 
 export interface Product {
@@ -48,7 +48,7 @@ const renderEditCell = ({ id, status }: Product) => (
       if (status === 1) e.preventDefault();
     }}
   >
-    <EditNote
+    <EditNoteIcon
       sx={{
         fontSize: 32,
         color: status === 1 ? "#ccc" : "#7f7e83",

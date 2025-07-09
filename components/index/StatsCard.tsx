@@ -1,9 +1,7 @@
 import { calculateTrendPercentage, cn } from "~/lib/utils";
 import { Card, CardContent } from "@mui/material";
-import {
-  ArrowDownwardOutlined,
-  ArrowUpwardOutlined,
-} from "@mui/icons-material";
+import ArrowDownwardOutlinedIcon from "@mui/icons-material/ArrowDownwardOutlined";
+import ArrowUpwardOutlinedIcon from "@mui/icons-material/ArrowUpwardOutlined";
 
 interface StatsCard {
   headerTitle: string;
@@ -35,9 +33,9 @@ const StatsCard = ({
               <div className="flex items-center gap-2">
                 <figure className="flex items-center gap-1">
                   {isDecrement ? (
-                    <ArrowDownwardOutlined color="error" />
+                    <ArrowDownwardOutlinedIcon color="error" />
                   ) : (
-                    <ArrowUpwardOutlined color="success" />
+                    <ArrowUpwardOutlinedIcon color="success" />
                   )}
                   <figcaption
                     className={cn(

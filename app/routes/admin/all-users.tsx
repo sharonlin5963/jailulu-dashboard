@@ -4,7 +4,7 @@ import { collection, getDocs, Timestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "~/firebase/config";
 import { formatFirestoreTimestamp } from "~/lib/utils";
-import { Face } from "@mui/icons-material";
+import FaceIcon from "@mui/icons-material/Face";
 import { Chip } from "@mui/material";
 
 interface User {
@@ -33,7 +33,7 @@ const renderUserCell = ({
         referrerPolicy="no-referrer"
       />
     ) : (
-      <Face className="text-gray-100" sx={{ fontSize: 32 }} />
+      <FaceIcon className="text-gray-100" sx={{ fontSize: 32 }} />
     )}
     <span>{name}</span>
   </div>

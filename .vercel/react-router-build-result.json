@@ -1,0 +1,152 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "root": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/root/signIn": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/all-users": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/products": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "product-create": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "product-edit": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "app/root.tsx",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/root/signIn": {
+        "id": "routes/root/signIn",
+        "parentId": "root",
+        "file": "app/routes/root/signIn.tsx",
+        "path": "sign-in",
+        "config": {}
+      },
+      "routes/admin/admin-layout": {
+        "id": "routes/admin/admin-layout",
+        "parentId": "root",
+        "file": "app/routes/admin/admin-layout.tsx",
+        "config": {}
+      },
+      "routes/admin/index": {
+        "id": "routes/admin/index",
+        "parentId": "routes/admin/admin-layout",
+        "file": "app/routes/admin/index.tsx",
+        "path": "",
+        "config": {}
+      },
+      "routes/admin/all-users": {
+        "id": "routes/admin/all-users",
+        "parentId": "routes/admin/admin-layout",
+        "file": "app/routes/admin/all-users.tsx",
+        "path": "all-users",
+        "config": {}
+      },
+      "routes/admin/products": {
+        "id": "routes/admin/products",
+        "parentId": "routes/admin/admin-layout",
+        "file": "app/routes/admin/products.tsx",
+        "path": "products",
+        "config": {}
+      },
+      "product-create": {
+        "id": "product-create",
+        "parentId": "routes/admin/admin-layout",
+        "file": "app/routes/admin/product-edit.tsx",
+        "path": "products/create",
+        "config": {}
+      },
+      "product-edit": {
+        "id": "product-edit",
+        "parentId": "routes/admin/admin-layout",
+        "file": "app/routes/admin/product-edit.tsx",
+        "path": "products/:id",
+        "config": {}
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "/Users/linjingci/Documents/project/jailulu-dashboard/app",
+    "basename": "/",
+    "buildDirectory": "/Users/linjingci/Documents/project/jailulu-dashboard/build",
+    "future": {
+      "unstable_middleware": false,
+      "unstable_optimizeDeps": false,
+      "unstable_splitRouteModules": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_viteEnvironmentApi": false
+    },
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "root.tsx"
+      },
+      "routes/root/signIn": {
+        "id": "routes/root/signIn",
+        "parentId": "root",
+        "file": "routes/root/signIn.tsx",
+        "path": "sign-in"
+      },
+      "routes/admin/admin-layout": {
+        "id": "routes/admin/admin-layout",
+        "parentId": "root",
+        "file": "routes/admin/admin-layout.tsx"
+      },
+      "routes/admin/index": {
+        "id": "routes/admin/index",
+        "parentId": "routes/admin/admin-layout",
+        "file": "routes/admin/index.tsx",
+        "path": ""
+      },
+      "routes/admin/all-users": {
+        "id": "routes/admin/all-users",
+        "parentId": "routes/admin/admin-layout",
+        "file": "routes/admin/all-users.tsx",
+        "path": "all-users"
+      },
+      "routes/admin/products": {
+        "id": "routes/admin/products",
+        "parentId": "routes/admin/admin-layout",
+        "file": "routes/admin/products.tsx",
+        "path": "products"
+      },
+      "product-create": {
+        "id": "product-create",
+        "parentId": "routes/admin/admin-layout",
+        "file": "routes/admin/product-edit.tsx",
+        "path": "products/create"
+      },
+      "product-edit": {
+        "id": "product-edit",
+        "parentId": "routes/admin/admin-layout",
+        "file": "routes/admin/product-edit.tsx",
+        "path": "products/:id"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}

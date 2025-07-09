@@ -2,13 +2,11 @@ import { NavLink, useLoaderData, useNavigate } from "react-router";
 import { cn } from "~/lib/utils";
 import { Logo } from "..";
 import { Button, IconButton } from "@mui/material";
-import {
-  Logout,
-  Face,
-  HomeOutlined,
-  GroupOutlined,
-  CategoryOutlined,
-} from "@mui/icons-material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import FaceIcon from "@mui/icons-material/Face";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import GroupOutlinedIcon from "@mui/icons-material/GroupOutlined";
+import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import { SvgIcon } from "@mui/material";
 import { auth } from "~/firebase/config";
 import { signOut } from "firebase/auth";
@@ -18,17 +16,17 @@ import EditProfileDialog from "./EditProfileDialog";
 const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   const sidebarItems = [
     {
-      icon: HomeOutlined,
+      icon: HomeOutlinedIcon,
       label: "首頁",
       href: "/",
     },
     {
-      icon: GroupOutlined,
+      icon: GroupOutlinedIcon,
       label: "用戶管理",
       href: "/all-users",
     },
     {
-      icon: CategoryOutlined,
+      icon: CategoryOutlinedIcon,
       label: "商品管理",
       href: "/products",
     },
@@ -88,7 +86,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
                   alt={user.displayName}
                 />
               ) : (
-                <Face className="text-gray-100" sx={{ fontSize: 40 }} />
+                <FaceIcon className="text-gray-100" sx={{ fontSize: 40 }} />
               )}
 
               <article className="text-left flex flex-col gap-1 max-w-[115px]">
@@ -107,7 +105,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
               onClick={handleLogout}
               loading={isLoading}
             >
-              <Logout />
+              <LogoutIcon />
             </IconButton>
           </footer>
         </div>

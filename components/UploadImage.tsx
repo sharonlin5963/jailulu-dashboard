@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { Image } from "@mui/icons-material";
+import ImageIcon from "@mui/icons-material/Image";
 import type { SxProps, Theme } from "@mui/material/styles";
 
 interface UploadImageProps {
@@ -54,7 +54,7 @@ const UploadImage = ({
         />
       ) : (
         <div className="text-gray-100 flex flex-col items-center gap-1">
-          <Image sx={{ fontSize: 32 }} />
+          <ImageIcon sx={{ fontSize: 32 }} />
           <span className="text-base font-normal">上傳圖片</span>
         </div>
       )}

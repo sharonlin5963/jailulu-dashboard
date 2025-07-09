@@ -1,4 +1,4 @@
-import { Add } from "@mui/icons-material";
+import AddIcon from "@mui/icons-material/Add";
 import { Button } from "@mui/material";
 import { Link } from "react-router";
 
@@ -25,7 +25,7 @@ const Header = ({ title, description, ctaText, ctaUrl }: Props) => {
         <Link to={ctaUrl}>
           <Button
             variant="contained"
-            startIcon={<Add />}
+            startIcon={<AddIcon />}
             className="whitespace-nowrap"
           >
             {ctaText}
