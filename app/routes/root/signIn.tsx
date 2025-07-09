@@ -62,7 +62,7 @@ const signIn = () => {
     try {
       setIsLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/index");
+      navigate("/");
     } catch (error: any) {
       handleAuthError(error.code);
     } finally {
