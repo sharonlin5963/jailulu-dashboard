@@ -52,7 +52,7 @@ const EditProfileDialog = ({ open, onClose }: EditProfileDialogProps) => {
     try {
       let photoURL = currentUser.photoURL || "";
       if (selectedImage) {
-        photoURL = await uploadToCloudinary(selectedImage);
+        photoURL = await uploadToCloudinary(selectedImage, "avatar");
       }
 
       await updateProfile(currentUser, {
