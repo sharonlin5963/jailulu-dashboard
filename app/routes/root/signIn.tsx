@@ -1,5 +1,5 @@
-import { TextField, Button, Box, Paper, Snackbar, Alert } from "@mui/material";
-import { Logo } from "components";
+import { TextField, Button, Box, Paper } from "@mui/material";
+import { Logo, Alert } from "components";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
 export async function clientLoader() {
   const currentUser = await getCurrentUser();
   if (currentUser) {
-    return redirect("/");
+    return redirect("/dashboard");
   }
 }
 
@@ -30,7 +30,7 @@ const signIn = () => {
   const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState("");
-  const [showErrorMessage, setShowErrorMessage] = useState(false);
+  const [alertOpen, setAlertOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -53,12 +53,12 @@ const signIn = () => {
     } else {
       setErrorMessage("登入失敗，請稍後再試");
     }
-    setShowErrorMessage(true);
+    setAlertOpen(true);
   };
 
   const onSubmit = async ({ email, password }: SignInFormValues) => {
     setErrorMessage("");
-    setShowErrorMessage(false);
+    setAlertOpen(false);
     try {
       setIsLoading(true);
       await signInWithEmailAndPassword(auth, email, password);
@@ -122,12 +122,13 @@ const signIn = () => {
         </Paper>
       </section>
 
-      <Snackbar
-        open={showErrorMessage}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert severity="error">{errorMessage}</Alert>
-      </Snackbar>
+      <Alert
+        open={alertOpen}
+        message={errorMessage}
+        severity="error"
+        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        onClose={() => setAlertOpen(false)}
+      />
     </main>
   );
 };
