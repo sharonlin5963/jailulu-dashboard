@@ -50,20 +50,28 @@ const BaseTable = <R extends { id: string | number }>({
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => {
-              return (
-                <TableRow hover={hover} key={row.id}>
-                  {columns.map((column) => {
-                    const value = (row as any)[column.id];
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format ? column.format(value, row) : value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+            {rows.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={columns.length} align="center">
+                  查無資料
+                </TableCell>
+              </TableRow>
+            ) : (
+              rows.map((row) => {
+                return (
+                  <TableRow hover={hover} key={row.id}>
+                    {columns.map((column) => {
+                      const value = (row as any)[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format ? column.format(value, row) : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })
+            )}
           </TableBody>
         </Table>
       </TableContainer>

@@ -1,5 +1,5 @@
-import { Header, BaseTable, Loading } from "../../../components";
-import type { Column } from "../../../components/ui/BaseTable";
+import { Header, BaseTable, Loading } from "components";
+import type { Column } from "components/ui/BaseTable";
 import { collection, getDocs, Timestamp } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "~/firebase/config";
@@ -96,7 +96,7 @@ const AllUsers = () => {
     <main className="wrapper dashboard">
       <Header
         title="用戶管理"
-        description="篩選、排序並查看詳細的使用者個人資料"
+        description="篩選、排序並查看詳細的使用者個人資料。"
       />
 
       <BaseTable columns={columns} rows={users} stickyHeader />

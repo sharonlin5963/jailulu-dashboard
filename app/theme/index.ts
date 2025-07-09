@@ -42,6 +42,13 @@ const theme = createTheme({
         },
       },
     },
+    MuiButton: {
+      styleOverrides: {
+        outlined: {
+          borderWidth: 2,
+        },
+      },
+    },
   },
 });
 

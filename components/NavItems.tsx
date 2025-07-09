@@ -2,7 +2,13 @@ import { NavLink, useLoaderData, useNavigate } from "react-router";
 import { cn } from "~/lib/utils";
 import { Logo } from "./";
 import { IconButton } from "@mui/material";
-import { Logout, Face, HomeOutlined, GroupOutlined } from "@mui/icons-material";
+import {
+  Logout,
+  Face,
+  HomeOutlined,
+  GroupOutlined,
+  CategoryOutlined,
+} from "@mui/icons-material";
 import { SvgIcon } from "@mui/material";
 import { auth } from "~/firebase/config";
 import { signOut } from "firebase/auth";
@@ -20,11 +26,11 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
       label: "用戶管理",
       href: "/all-users",
     },
-    // {
-    //   icon: "/assets/icons/users.svg",
-    //   label: "商品管理",
-    //   href: "/products",
-    // },
+    {
+      icon: CategoryOutlined,
+      label: "商品管理",
+      href: "/products",
+    },
   ];
 
   const user = useLoaderData();
