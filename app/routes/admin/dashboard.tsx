@@ -42,16 +42,13 @@ const allItems = [
   },
 ];
 
-export const clientLoader = async () => await getCurrentUser();
-
 const Dashboard = () => {
-  const user = useLoaderData();
   const { usersJoined, itemsCreated, userRole } = dashboardStats;
 
   return (
     <main className="wrapper dashboard">
       <Header
-        title={`您好 ${user?.name || user?.email} 👋`}
+        title="您好 👋"
         description="提供商品管理、訂單追蹤與銷售分析功能，幫助快速更新商品資訊、查看客戶資料及掌握市場趨勢，高效提升運營效率。"
       />
 
@@ -79,7 +76,7 @@ const Dashboard = () => {
       </section>
 
       <section className="flex flex-col gap-5 mt-2.5">
-        <h1 className="text-xl font-semibold text-dark-100">新增商品</h1>
+        <h1 className="text-xl font-semibold text-dark-100">商品列表</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
           {allItems.slice(0, 4).map((item) => (
             <ItemCard

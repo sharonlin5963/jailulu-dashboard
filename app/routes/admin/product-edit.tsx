@@ -25,6 +25,7 @@ import { db } from "~/firebase/config";
 import { useNavigate, type LoaderFunctionArgs } from "react-router";
 import { useParams } from "react-router";
 import type { Route } from "./+types/product-edit";
+import { uploadToCloudinary } from "~/cloudinary";
 
 interface InitialProduct {
   name: string;
@@ -79,25 +80,6 @@ const schema = yup.object().shape({
       otherwise: (schema) => schema.notRequired(),
     }),
 });
-
-const cloudinaryUpload = async (image: File) => {
-  const formDataImage = new FormData();
-  formDataImage.append("file", image);
-  formDataImage.append("upload_preset", "jailulu_product_image_upload");
-
-  try {
-    const response = await fetch(
-      "https://api.cloudinary.com/v1_1/dgtaxvo7h/image/upload",
-      { method: "POST", body: formDataImage }
-    );
-
-    const data = await response.json();
-    return data.secure_url;
-  } catch (error) {
-    console.error("Cloudinary upload error:", error);
-    throw error;
-  }
-};
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const { id } = params;
@@ -155,7 +137,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
     try {
       let imageUrl = initialProduct?.imageUrl ?? "";
       if (selectedImage) {
-        imageUrl = await cloudinaryUpload(selectedImage);
+        imageUrl = await uploadToCloudinary(selectedImage);
       }
       const selectedGroup = groups.find(
         (group) => group.value === formData.group

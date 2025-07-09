@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import { Button } from "@mui/material";
 import { Image } from "@mui/icons-material";
+import type { SxProps, Theme } from "@mui/material/styles";
 
 interface UploadImageProps {
   onImageSelect: (file: File) => void;
   defaultImage?: string;
+  sx?: SxProps<Theme>;
 }
 
-const UploadImage = ({ onImageSelect, defaultImage }: UploadImageProps) => {
+const UploadImage = ({
+  onImageSelect,
+  defaultImage,
+  sx = {},
+}: UploadImageProps) => {
   const [image, setImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -37,6 +43,7 @@ const UploadImage = ({ onImageSelect, defaultImage }: UploadImageProps) => {
         padding: 0,
         overflow: "hidden",
         margin: "auto",
+        ...sx,
       }}
     >
       {image ? (

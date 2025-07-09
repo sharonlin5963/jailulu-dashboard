@@ -13,6 +13,7 @@ import { SvgIcon } from "@mui/material";
 import { auth } from "~/firebase/config";
 import { signOut } from "firebase/auth";
 import { useState } from "react";
+import EditProfileDialog from "./EditProfileDialog";
 
 const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   const sidebarItems = [
@@ -36,6 +37,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   const user = useLoaderData();
   const navigator = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+  const [editOpen, setEditOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -48,67 +50,71 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
   };
 
   return (
-    <section className="flex flex-col px-6 h-full">
-      <div className="pt-10">
-        <Logo />
-      </div>
+    <>
+      <section className="flex flex-col px-6 h-full">
+        <div className="pt-10">
+          <Logo />
+        </div>
 
-      <div className="flex justify-between flex-col h-full">
-        <nav className="flex flex-col gap-3.5 pt-9">
-          {sidebarItems.map(({ icon, label, href }) => (
-            <NavLink to={href} key={href}>
-              {({ isActive }: { isActive: boolean }) => (
-                <div
-                  className={cn("group nav-item", {
-                    "bg-primary-100 !text-white": isActive,
-                  })}
-                  onClick={handleClick}
-                >
-                  <SvgIcon component={icon} />
-                  {label}
-                </div>
+        <div className="flex justify-between flex-col h-full">
+          <nav className="flex flex-col gap-3.5 pt-9">
+            {sidebarItems.map(({ icon, label, href }) => (
+              <NavLink to={href} key={href}>
+                {({ isActive }: { isActive: boolean }) => (
+                  <div
+                    className={cn("group nav-item", {
+                      "bg-primary-100 !text-white": isActive,
+                    })}
+                    onClick={handleClick}
+                  >
+                    <SvgIcon component={icon} />
+                    {label}
+                  </div>
+                )}
+              </NavLink>
+            ))}
+          </nav>
+
+          <footer className="flex gap-3 pb-8">
+            <Button
+              variant="text"
+              className="flex gap-2.5"
+              onClick={() => setEditOpen(true)}
+            >
+              {user.photoURL ? (
+                <img
+                  className="size-10 rounded-full aspect-square"
+                  src={user.photoURL}
+                  alt={user.displayName}
+                />
+              ) : (
+                <Face className="text-gray-100" sx={{ fontSize: 40 }} />
               )}
-            </NavLink>
-          ))}
-        </nav>
 
-        <footer className="flex-center gap-3 pb-8">
-          <Button
-            variant="text"
-            className="flex-center gap-2.5"
-            // onClick={setModalOpen}
-          >
-            {user.imageUrl ? (
-              <img
-                className="size-10 rounded-full aspect-square"
-                src={user.imageUrl}
-                alt={user.name}
-              />
-            ) : (
-              <Face className="text-gray-100" sx={{ fontSize: 40 }} />
-            )}
+              <article className="text-left flex flex-col gap-1 max-w-[115px]">
+                <h2 className="p-16-semibold text-dark-200 truncate">
+                  {user?.displayName || user?.email}
+                </h2>
+                <p className="text-gray-100 text-xs md:text-sm font-normal truncate">
+                  {user?.email}
+                </p>
+              </article>
+            </Button>
 
-            <article className="flex flex-col gap-[2px] max-w-[115px]">
-              <h2 className="p-16-semibold text-dark-200 truncate">
-                {user?.name || user?.email}
-              </h2>
-              <p className="text-gray-100 text-xs md:text-sm font-normal truncate">
-                {user?.email}
-              </p>
-            </article>
-          </Button>
+            <IconButton
+              aria-label="logout"
+              color="warning"
+              onClick={handleLogout}
+              loading={isLoading}
+            >
+              <Logout />
+            </IconButton>
+          </footer>
+        </div>
+      </section>
 
-          <IconButton
-            aria-label="logout"
-            color="warning"
-            onClick={handleLogout}
-            loading={isLoading}
-          >
-            <Logout />
-          </IconButton>
-        </footer>
-      </div>
-    </section>
+      <EditProfileDialog open={editOpen} onClose={() => setEditOpen(false)} />
+    </>
   );
 };
 
