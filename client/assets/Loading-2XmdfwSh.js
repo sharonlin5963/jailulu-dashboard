@@ -1,0 +1,1 @@
+import{o as r}from"./chunk-NL6KNZEE-CQkoafV0.js";import{k as e,G as a}from"./config-DlFqBImT.js";const t=({open:o})=>r.jsx(e,{sx:s=>({color:"#fff",zIndex:s.zIndex.drawer+1}),open:o,children:r.jsx(a,{color:"inherit"})});export{t as L};
