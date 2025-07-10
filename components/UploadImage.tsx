@@ -7,12 +7,14 @@ interface UploadImageProps {
   onImageSelect: (file: File) => void;
   defaultImage?: string;
   sx?: SxProps<Theme>;
+  disabled?: boolean;
 }
 
 const UploadImage = ({
   onImageSelect,
   defaultImage,
   sx = {},
+  disabled = false,
 }: UploadImageProps) => {
   const [image, setImage] = useState<string | null>(null);
 
@@ -35,6 +37,7 @@ const UploadImage = ({
     <Button
       component="label"
       variant="outlined"
+      disabled={disabled}
       sx={{
         width: "100%",
         aspectRatio: "1 / 1",

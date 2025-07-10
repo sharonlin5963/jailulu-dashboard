@@ -9,9 +9,10 @@ import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { db } from "~/firebase/config";
 import type { Column } from "components/ui/BaseTable";
-import { Switch } from "@mui/material";
+import { Switch, Tooltip } from "@mui/material";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { Link } from "react-router";
+import { formatTWD } from "~/lib/utils";
 
 export interface Product {
   name: string;
@@ -42,20 +43,22 @@ const renderImageCell = ({ imageUrl, name }: Product) => (
   />
 );
 const renderEditCell = ({ id, status }: Product) => (
-  <Link
-    to={status === 1 ? "#" : `/products/${id}`}
-    onClick={(e) => {
-      if (status === 1) e.preventDefault();
-    }}
-  >
-    <EditNoteIcon
-      sx={{
-        fontSize: 32,
-        color: status === 1 ? "#ccc" : "#7f7e83",
-        cursor: status === 1 ? "not-allowed" : "pointer",
+  <Tooltip title={status === 1 ? "商品已上架，無法編輯" : ""} placement="top">
+    <Link
+      to={status === 1 ? "#" : `/products/${id}`}
+      onClick={(e) => {
+        if (status === 1) e.preventDefault();
       }}
-    />
-  </Link>
+    >
+      <EditNoteIcon
+        sx={{
+          fontSize: 32,
+          color: status === 1 ? "#ccc" : "#7f7e83",
+          cursor: status === 1 ? "not-allowed" : "pointer",
+        }}
+      />
+    </Link>
+  </Tooltip>
 );
 
 const products = () => {
@@ -133,11 +136,25 @@ const products = () => {
       id: "price",
       label: "價格",
       align: "right",
+      format: (_, row) => (
+        <div
+          className={
+            row.isSale ? "text-gray-100 line-through decoration-red-100" : ""
+          }
+        >
+          {formatTWD(row.price)}
+        </div>
+      ),
     },
     {
       id: "specialPrice",
       label: "特價價格",
       align: "right",
+      format: (_, row) => (
+        <div className={row.isSale ? "text-red-100" : ""}>
+          {formatTWD(row.specialPrice)}
+        </div>
+      ),
     },
     {
       id: "status",

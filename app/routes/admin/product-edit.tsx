@@ -123,6 +123,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
   });
 
   const isSale = watch("isSale");
+  const editable = initialProduct?.status === 0;
 
   const onSubmit = async (formData: InitialProduct | ProductCreate) => {
     if (!selectedImage && !initialProduct?.imageUrl) {
@@ -187,6 +188,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
             <UploadImage
               defaultImage={initialProduct?.imageUrl}
               onImageSelect={(file) => setSelectedImage(file)}
+              disabled={!editable}
             />
 
             <TextField
@@ -196,6 +198,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
               {...register("name")}
               error={!!errors.name}
               helperText={errors.name?.message}
+              disabled={!editable}
             />
 
             <TextField
@@ -208,6 +211,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
               error={!!errors.describe}
               helperText={errors.describe?.message}
               defaultValue=""
+              disabled={!editable}
             />
 
             <TextField
@@ -219,6 +223,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
               error={!!errors.group}
               helperText={errors.group?.message}
               defaultValue={initialProduct?.group}
+              disabled={!editable}
             >
               {groups.map((option) => (
                 <MenuItem key={option.value} value={option.value}>
@@ -234,11 +239,14 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
               {...register("price")}
               error={!!errors.price}
               helperText={errors.price?.message}
+              type="number"
+              disabled={!editable}
             />
 
             <FormControlLabel
               control={<Checkbox {...register("isSale")} />}
               label="特價商品"
+              disabled={!editable}
             />
 
             {isSale && (
@@ -249,6 +257,8 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
                 {...register("specialPrice")}
                 error={!!errors.specialPrice}
                 helperText={errors.specialPrice?.message}
+                type="number"
+                disabled={!editable}
               />
             )}
 
@@ -260,6 +270,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
               loading={loading}
               loadingPosition="start"
               onClick={handleSubmit(onSubmit)}
+              disabled={!editable}
             >
               {id ? "更新商品" : "新增商品"}
             </Button>

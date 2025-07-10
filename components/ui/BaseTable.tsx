@@ -8,6 +8,7 @@ import {
   TableRow,
 } from "@mui/material";
 import type { ReactNode } from "react";
+import type { SxProps, Theme } from "@mui/material/styles";
 
 export interface Column<R> {
   id: string;
@@ -15,6 +16,7 @@ export interface Column<R> {
   minWidth?: number;
   align?: "right" | "center";
   format?: (value: any, row: R) => ReactNode;
+  sx?: SxProps<Theme>;
 }
 
 interface TableData<R extends { id: string | number }> {
@@ -63,7 +65,11 @@ const BaseTable = <R extends { id: string | number }>({
                     {columns.map((column) => {
                       const value = (row as any)[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          sx={{ ...column.sx }}
+                        >
                           {column.format ? column.format(value, row) : value}
                         </TableCell>
                       );
