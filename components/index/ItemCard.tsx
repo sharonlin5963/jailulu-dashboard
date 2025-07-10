@@ -23,7 +23,7 @@ const ItemCard = ({
 }: ItemCardProps) => {
   return (
     <Card>
-      <CardActionArea component={Link} to={`/product-edit/${id}`}>
+      <CardActionArea component={Link} to={`/products/${id}`}>
         <img
           src={imageUrl}
           alt={name}
