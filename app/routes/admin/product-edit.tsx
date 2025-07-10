@@ -8,7 +8,7 @@ import {
   TextField,
 } from "@mui/material";
 import { Alert, Header, UploadImage } from "components";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
@@ -116,6 +116,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
     register,
     handleSubmit,
     watch,
+    control,
     formState: { errors },
   } = useForm<ProductCreate>({
     resolver: yupResolver(schema),
@@ -244,7 +245,15 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
             />
 
             <FormControlLabel
-              control={<Checkbox {...register("isSale")} />}
+              control={
+                <Controller
+                  name="isSale"
+                  control={control}
+                  render={({ field }) => (
+                    <Checkbox {...field} checked={field.value} />
+                  )}
+                />
+              }
               label="特價商品"
               disabled={!editable}
             />

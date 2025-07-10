@@ -152,7 +152,7 @@ const products = () => {
       align: "right",
       format: (_, row) => (
         <div className={row.isSale ? "text-red-100" : ""}>
-          {formatTWD(row.specialPrice)}
+          {row.isSale ? formatTWD(row.specialPrice) : ""}
         </div>
       ),
     },
