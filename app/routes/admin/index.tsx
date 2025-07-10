@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
-import { Header, ItemCard, Loading, StatsCard } from "../../../components";
+import {
+  BaseTable,
+  Header,
+  ItemCard,
+  Loading,
+  StatsCard,
+} from "../../../components";
 import type { Product } from "../admin/products";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "~/firebase/config";
 import { Link } from "react-router";
 import { Button } from "@mui/material";
+import UserGrowthChart from "components/index/UserGrowthChart";
+import ProductCategorySalesChart from "components/index/ProductCategorySalesChart";
+import type { Column } from "components/ui/BaseTable";
+import TopSellingProductsTable from "components/index/TopSellingProductsTable.tsx";
+import ReturnedProductsTable from "components/index/ReturnedProductsTable";
 
 const dashboardStats = {
   usersJoined: { total: 125, currentMonth: 20, lastMonth: 10 },
@@ -92,6 +103,20 @@ const Dashboard = () => {
           )}
         </div>
         <Loading open={loading} />
+      </section>
+
+      <section className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <ProductCategorySalesChart />
+        <UserGrowthChart />
+      </section>
+
+      <section className="flex flex-col lg:flex-row gap-5 justify-between">
+        <div className="flex-1">
+          <TopSellingProductsTable />
+        </div>
+        <div className="flex-1">
+          <ReturnedProductsTable />
+        </div>
       </section>
     </main>
   );
