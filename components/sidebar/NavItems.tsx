@@ -22,7 +22,7 @@ const NavItems = ({ handleClick }: { handleClick?: () => void }) => {
     },
     {
       icon: GroupOutlinedIcon,
-      label: "用戶管理",
+      label: "會員管理",
       href: "/all-users",
     },
     {

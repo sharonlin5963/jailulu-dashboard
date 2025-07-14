@@ -13,7 +13,7 @@ interface User {
   id: string;
   imageUrl: string;
   name: string;
-  type: string;
+  level: number;
   uId: string;
 }
 
@@ -39,13 +39,30 @@ const renderUserCell = ({
   </div>
 );
 
-const renderTypeCell = (type: string) => {
-  const bgColor: Record<string, "default" | "success"> = {
-    admin: "default",
-    user: "success",
+interface MemberLevel {
+  label: string;
+  color: "default" | "success";
+}
+const renderLevelCell = (level: string) => {
+  const memberLevelMap: Record<string, MemberLevel> = {
+    1: {
+      label: "一般會員",
+      color: "default",
+    },
+    2: {
+      label: "VIP會員",
+      color: "success",
+    },
   };
+
+  const memberLevel = memberLevelMap[level];
   return (
-    <Chip color={bgColor[type]} label={type} variant="outlined" size="small" />
+    <Chip
+      color={memberLevel.color}
+      label={memberLevel.label}
+      variant="outlined"
+      size="small"
+    />
   );
 };
 
@@ -63,10 +80,10 @@ const columns: Column<User>[] = [
     format: (value: Timestamp) => formatFirestoreTimestamp(value),
   },
   {
-    id: "type",
+    id: "level",
     label: "類型",
     align: "center",
-    format: (value) => renderTypeCell(value),
+    format: (value) => renderLevelCell(value),
   },
 ];
 
@@ -95,8 +112,8 @@ const AllUsers = () => {
   return (
     <main className="wrapper dashboard">
       <Header
-        title="用戶管理"
-        description="篩選、排序並查看詳細的使用者個人資料。"
+        title="會員管理"
+        description="篩選、排序並查看詳細的會員個人資料。"
       />
 
       <BaseTable columns={columns} rows={users} stickyHeader />
