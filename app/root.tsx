@@ -28,10 +28,21 @@ export const links: Route.LinksFunction = () => [
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="zh-TW">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Jailulu 後台管理系統</title>
+        <meta property="og:title" content="Jailulu後台管理系統" />
+        <meta
+          property="og:url"
+          content="https://jailulu-dashboard.vercel.app/"
+        />
+        <meta property="og:image" content="/assets/images/og-image.jpg" />
+        <meta
+          name="description"
+          content="Jailulu後台管理系統-商品與會員管理平台"
+        />
         <Meta />
         <Links />
       </head>
