@@ -1,87 +1,67 @@
-# Welcome to React Router!
+# 【Jailulu 宅家飾】後台管理系統
 
-A modern, production-ready template for building full-stack React applications using React Router.
+- [DEMO](https://jailulu-dashboard.vercel.app/)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+## 簡介
 
-## Features
+###
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+以 Firebase 為後端服務，整合會員管理、商品 CRUD、圖片上傳與數據視覺化，並使用 React Router 建構多頁式後台操作介面。
 
-## Getting Started
+## 網頁架構
 
-### Installation
+###
 
-Install the dependencies:
+- 首頁
+  - 資料分析
+- 會員管理
+- 商品管理
+  - 新增、編輯、商品上下架
+- 會員
+  - 資料修改
 
-```bash
-npm install
-```
+## 使用技術
 
-### Development
+###
 
-Start the development server with HMR:
+- React 19
+- React Router v7
+- TypeScript
+- Material UI
+- Tailwind CSS
+- React Hook Form
+- Recharts — 圖表視覺化工具，用於會員成長 / 銷售數據呈現
+- Firebase — 提供會員驗證與資料儲存功能
+- Cloudinary — 圖片上傳與管理服務
+- Vercel — 專案部署
 
-```bash
-npm run dev
-```
+## 作品介紹
 
-Your application will be available at `http://localhost:5173`.
+### 【會員登入】
 
-## Building for Production
+![Alt text](/docs/signIn.jpg)
 
-Create a production build:
+### 【首頁】
 
-```bash
-npm run build
-```
+![Alt text](./docs/index01.jpg)
+![Alt text](./docs/index02.jpg)
 
-## Deployment
+### 【會員管理】
 
-### Docker Deployment
+![Alt text](/docs/users.jpg)
 
-To build and run using Docker:
+### 【商品管理】
 
-```bash
-docker build -t my-app .
+![Alt text](/docs/products.jpg)
 
-# Run the container
-docker run -p 3000:3000 my-app
-```
+#### 新增商品
 
-The containerized application can be deployed to any platform that supports Docker, including:
+![Alt text](/docs/create-product.jpg)
 
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
+#### 編輯商品
 
-### DIY Deployment
+![Alt text](/docs/edit-product.jpg)
 
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
+### 【會員資料】
 
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+![Alt text](/docs/memberInfo.jpg)
