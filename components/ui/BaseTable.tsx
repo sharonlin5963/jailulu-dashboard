@@ -22,7 +22,7 @@ export interface Column<R> {
 interface TableData<R extends { id: string | number }> {
   columns: Column<R>[];
   rows: R[];
-  maxHeight?: number;
+  maxHeight?: number | "initial";
   stickyHeader?: boolean;
   hover?: boolean;
 }
@@ -30,7 +30,7 @@ interface TableData<R extends { id: string | number }> {
 const BaseTable = <R extends { id: string | number }>({
   columns,
   rows,
-  maxHeight = 500,
+  maxHeight = "initial",
   stickyHeader = false,
   hover = true,
 }: TableData<R>) => {
