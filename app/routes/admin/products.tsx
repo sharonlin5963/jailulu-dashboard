@@ -125,13 +125,20 @@ const products = () => {
       id: "imageUrl",
       label: "商品圖片",
       align: "center",
+      minWidth: 120,
       format: (_, row) => renderImageCell(row),
     },
     {
       id: "name",
       label: "商品名稱",
+      minWidth: 160,
     },
-    { id: "group", label: "商品分類", format: (group) => group.label },
+    {
+      id: "group",
+      label: "商品分類",
+      minWidth: 120,
+      format: (group) => group.label,
+    },
     {
       id: "price",
       label: "價格",

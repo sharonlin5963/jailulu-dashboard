@@ -71,6 +71,7 @@ const columns: Column<User>[] = [
     id: "name",
     label: "名稱",
     format: (_, row) => renderUserCell(row),
+    minWidth: 160,
   },
   { id: "email", label: "信箱", minWidth: 200 },
   {
