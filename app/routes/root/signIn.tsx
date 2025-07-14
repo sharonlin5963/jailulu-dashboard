@@ -39,6 +39,10 @@ const signIn = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    defaultValues: {
+      email: "test007@gmail.com",
+      password: "1234567",
+    },
   });
 
   const handleAuthError = (errorCode: string) => {
