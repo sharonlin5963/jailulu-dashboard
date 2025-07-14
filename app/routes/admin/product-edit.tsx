@@ -124,7 +124,7 @@ const productEdit = ({ loaderData }: Route.ComponentProps) => {
   });
 
   const isSale = watch("isSale");
-  const editable = initialProduct?.status === 0;
+  const editable = initialProduct?.status === 0 || !initialProduct?.status;
 
   const onSubmit = async (formData: InitialProduct | ProductCreate) => {
     if (!selectedImage && !initialProduct?.imageUrl) {
